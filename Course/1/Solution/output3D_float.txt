@@ -1,0 +1,2 @@
+    x  3.00    y  4.00    z  5.00   absolute_value_2D  5.00   absolute_value_3D  7.07
+    x  2.30    y  4.50    z  2.30   absolute_value_2D  5.05   absolute_value_3D  5.55

@@ -1,0 +1,49 @@
+The first goal of the second tutorial is to get familiar with pointers, references, passing objects by value, by reference, by constant reference, by pointer, by constant pointer. Try to change the values inside the functions and get familiar with how it works and when. 
+
+The second goal of the tutorial is to get familiar with the standard template library, namely std::string, std::vector, std::map, std::list, as well as looping over these containers in an automatic way thanks to templating via iterators, which are a special type of pointers. 
+
+Please read Sarah's notes about these, as well as other tutorials online, such as.
+
+pointers:
+http://alumni.cs.ucr.edu/~pdiloren/C++_Pointers/
+http://www.cplusplus.com/doc/tutorial/pointers/
+https://www.youtube.com/watch?v=W0aE-w61Cb8
+ 
+tutorials:
+http://www.cprogramming.com/tutorial/references.html
+
+containers in the standard template library:
+http://www.cplusplus.com/reference/stl/
+
+Then please go through the examples I put together in TutorialCPP. Compile and run them. Then read through the code, try to play with it, modify it. Using also the ones from the first tutorial, we are ready to see these folders, the rest will be:
+
+testCommandLineArguments
+testCommandLineArgumentsWithUsageMethod
+testFunctionDefaultValue
+testFunctionOverloading
+testFunctionPassByPointer
+testFunctionPassByReference
+testFunctionTemplate
+testHelloWorld
+testHowLongItRuns
+testReadFromFile
+testStdMap
+testStdVector
+testWriteToFile
+
+Then let's solve the following exercise. The file input.txt contains a list of planets (name, mass in kg in scientific notation, average distance to the Sun in astronomic units, where 1.0 is the distance from the Earth to the sun). 
+
+1. Print on each line the name of the planets, in alphabetical order.
+2. Print on each line the name of the planet followed by its mass, in order of the mass. Same for distance to the sun. 
+3. Print the planet with the smallest and largest mass. Same for distance to the sun. 
+4. Compute the weighted average distance to the Sun of all the planets, defined as sum over the planets of mass times distance, and all divided by the sum of the masses of all planets (\frac{\Sum mi*di}{\Sum mi}). 
+
+Tips: 
+1. scientific notation, useful for large numbers:
+http://www.cplusplus.com/forum/general/9616/
+
+2. std::map<std::string, double> to store pairing between a word and a number, when iterating over a map, the items come ranked, and if they are words, that means aphabetical order.
+
+3. Use algorithms on the STL containers, like getting max and min from an std::vector<double> 
+http://stackoverflow.com/questions/10158756/using-stdmax-element-on-a-vectordouble
+

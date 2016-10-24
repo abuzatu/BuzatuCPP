@@ -1,0 +1,1 @@
+Rungge-Kutta de ordinul patru metoda mai rapida si mai precisa

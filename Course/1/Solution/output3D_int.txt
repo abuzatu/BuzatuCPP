@@ -1,0 +1,2 @@
+    x     3    y     4    z     5   absolute_value_2D     5   absolute_value_3D     7
+    x     2    y     4    z     2   absolute_value_2D     4   absolute_value_3D     4

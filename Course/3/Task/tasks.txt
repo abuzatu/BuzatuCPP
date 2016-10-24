@@ -1,0 +1,9 @@
+We will solve the same task as in Lab2, Using the same input file as from Lab2, with planets by name, mass and distance to the Sun. But now let's use a class to solve this problem easier. 
+
+Let's create a class Planet that has the members of name of type string, mass and distance of type double. While reading line by line, meaning planet by planet, for each line we build a new object of type planet. We store all of them in a vector of planets, namely std::vector<Planet>. That is the power of creating our own types, as we can use them just as we would have used the regular types already created by C++, such as std::string and double. We are familiar now with the std::sort of a std::vector. The default is by comparing the two objects. But what means that a planet is larger in value than another one? We can overload the operator > and < to mean whatever we want, be it the name is more to the right in alphabetical order, or that the mass is larger, or that the distance to the sun is larger. 
+
+To change easily from one sorting to the other, we note that std::sort can use some functions we define, and we can define a function for each three cases, so that we don't have to change anything in the class, but still be able to plot the different orderings easily. 
+
+We will first create the class in the same file, to compile easily, the same way as before. But next we will move the class in it's own files and compile it as a shared library, so we will learn a bit more advanced concepts about compiling and linking. 
+
+This will get us ready for the larger project of Lab4, which also starts with a class Body, very similar to Planet. 

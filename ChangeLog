@@ -1,0 +1,27 @@
+Adrian Buzatu (adrian.buzatu@glasgow.ac.uk)
+Example of a package of data analysis in C++, here the ChangeLog
+
+Tag 00-00-01:
+First version, the one after the course of SUPA C++ of Dec 2014.
+
+Tag 00-00-02:
+On Dec 15, provided the solutions to the exercises I assigned for the lab, as well as new ones.
+Also introduced to automatically pick if Linux and if not.
+Added ./util/new.sh to help create new folders easily
+
+Tag 00-00-03:
+o Updated the .h headers to have common comments for C++ libraries, our headers adn functions or classes we define.
+o Also used uniform rhs for the operators in different classes.
+o Added TemplatedClass and TemplatedClassStreamer and their tests
+
+Tag 00-00-04:
+o Added the Course folder, with the materials I presented in the SUPACOO course in Oct-Nov 2015 at Glasgow. 
+
+Tag 00-00-05:
+o Moved the previous code in a Package.
+
+Tag 00-00-06
+Oct 20,last version inSVN, first version in GitLab.
+
+Tag 00-00-07
+	[Work in progress]

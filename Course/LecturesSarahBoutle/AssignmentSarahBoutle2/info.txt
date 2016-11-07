@@ -1,0 +1,1 @@
+The assignment description can be found in tasks.txt. The additional input data files are also included here. Please upload your answers to this assignement (the source code, not the executables) preferably as a .tar or zip file. If your program does not compile, please state this under "Notes".

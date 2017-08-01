@@ -7,7 +7,7 @@ ifeq ($(WHERE_I_RUN),Linux)
 ARCH=linuxx8664gcc
 else ifeq ($(WHERE_I_RUN),Darwin)
 ARCH=macosx64
-MACOSXTARGET=10.9
+MACOSXTARGET=10.12
 endif
 
 # by using this the code runs faster; with latest compilers even -O3 can be used instead
@@ -24,9 +24,11 @@ endif
 
 ifeq ($(ARCH),macosx64)
 # MacOS X >= 10.4 with gcc 64 bit mode (GNU gcc 4.*)
-CXX           =clang++ 
+#CXX           =clang++ 
+CXX            =g++
 CXXFLAGS      =$(OPT) -pipe -Wall -W -Woverloaded-virtual -std=c++11
-LD            =clang++
+#LD            =clang++
+LD            =g++
 LDFLAGS       =$(OPT) -mmacosx-version-min=$(MACOSXTARGET)
 SOFLAGS       =-dynamiclib -single_module
 endif

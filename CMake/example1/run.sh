@@ -60,7 +60,7 @@ fi
 
 # if here, you also want to run
 
-COMMAND="./code/build/test"
+COMMAND="./code/build/test 2.0"
 echo "COMMAND=${COMMAND}"
 eval ${COMMAND}
 

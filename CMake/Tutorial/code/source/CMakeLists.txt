@@ -10,9 +10,17 @@ configure_file (
   "${PROJECT_BINARY_DIR}/TutorialConfig.h"
 )
 
-# add the binary tree to the search fpath for include files
+# add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
 
+# include the header where our mysqrt() function is declared
+include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
+
+# add to build first the subdirectory where our static library will be compiled and linked
+add_subdirectory(MathFunctions)
+
 # add the executable
 add_executable(Tutorial tutorial.cxx)
+# to link to Tutorial our static library
+target_link_libraries(Tutorial MathFunctions)

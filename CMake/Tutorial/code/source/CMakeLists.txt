@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(Tutorial)
+include(CTest)
 
 # The version number
 set(Tutorial_VERSION_MAJOR 2)
@@ -12,6 +13,8 @@ option(USE_MYMATH "Use math implementation provided by tutorial" ON)
 # check_function_exists checks for that function and stores the result in a variable
 # https://cmake.org/cmake/help/v3.0/module/CheckFunctionExists.html
 include(CheckFunctionExists)
+# the simple include equivalent with the full include below
+# include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
 check_function_exists(exp HAVE_EXP)
 check_function_exists(log HAVE_LOG)
 
@@ -44,7 +47,7 @@ add_executable(Tutorial tutorial.cxx)
 # to link to Tutorial the EXTRA_LIBS, for now only the MathFunctions, if needed, else 
 target_link_libraries(Tutorial ${EXTRA_LIBS})
 
-# to install the executable
+# add the install targets
 message(STATUS "Installing the Tutorial executable and header in folder ${CMAKE_INSTALL_PREFIX}")
 # place the executable called Tutorial in /usr/local/bin/Tutorial
 # so you can then run from any folder Tutorial and the executable will run
@@ -58,7 +61,6 @@ install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 # https://gitlab.kitware.com/cmake/community/wikis/doc/ctest/Testing-With-CTest
 # the PASS_REGULAR_EXPRESSION checks in the output if a certain string exists
 # we print in the format of OUTPUT is OUTPUT, so we can search in this format
-include(CTest)
 # does the application run
 add_test (TutorialRuns Tutorial 25)
 # does it sqrt of 25

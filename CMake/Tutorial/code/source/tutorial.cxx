@@ -15,7 +15,7 @@
 #include "MathFunctions.h"
 #endif
 
-
+#include "Table.h"
 
 // main
 int main (int argc, char *argv[])
@@ -45,5 +45,6 @@ int main (int argc, char *argv[])
 #endif
   fprintf(stdout,"The square root of %g is %g\n",
     inputValue, outputValue);
+  fprintf(stdout,"From the sqrtTable already computed in Table.h=%g\n",sqrtTable[3]);
   return 0;
 }

@@ -36,6 +36,9 @@ if(USE_MYMATH)
   set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
 endif(USE_MYMATH)
 
+# after creating Table.h in building stage, to be able to include it
+include_directories("${PROJECT_BINARY_DIR}/MathFunctions")
+
 # add the executable
 add_executable(Tutorial tutorial.cxx)
 # to link to Tutorial the EXTRA_LIBS, for now only the MathFunctions, if needed, else 

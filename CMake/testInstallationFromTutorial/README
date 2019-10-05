@@ -1,0 +1,4 @@
+This projects tests that the static library /usr/local/bin/libMathFunctions.a produced in the project Tutorial can be linked here.
+The key two steps:
+* add in `CMakeLists.txt` the line `target_link_libraries(test /usr/local/bin/libMathFunctions.a)`
+* add in `test.cpp` the line `#include "MathFunctions.h"` (it will look automatically in `/usr/local/include` where our installation has put it

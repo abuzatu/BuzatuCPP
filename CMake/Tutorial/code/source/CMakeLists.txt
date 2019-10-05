@@ -34,6 +34,7 @@ add_executable(Tutorial tutorial.cxx)
 target_link_libraries(Tutorial ${EXTRA_LIBS})
 
 # to install the executable
+message(STATUS "Installing the Tutorial executable and header in folder ${CMAKE_INSTALL_PREFIX}")
 # place the executable called Tutorial in /usr/local/bin/Tutorial
 # so you can then run from any folder Tutorial and the executable will run
 # the result will be: -- Installing: /usr/local/bin/Tutorial

@@ -7,6 +7,13 @@ set(Tutorial_VERSION_MINOR 3)
 # should we use our own math functions?
 option(USE_MYMATH "Use math implementation provided by tutorial" ON)
 
+# add system introspection to check if a given function exists on the target platform where we want to build
+# check_function_exists checks for that function and stores the result in a variable
+# https://cmake.org/cmake/help/v3.0/module/CheckFunctionExists.html
+include(CheckFunctionExists)
+check_function_exists(exp HAVE_EXP)
+check_function_exists(log HAVE_LOG)
+
 # configure a header file to pass some of the CMake settings to the source code
 configure_file (
   "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
@@ -75,4 +82,3 @@ endmacro(do_test)
 do_test(25 "25 is 5")
 do_test(49 "49 is 7")
 do_test(-3.7 "-3.7 is 0")
-

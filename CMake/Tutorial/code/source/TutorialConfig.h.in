@@ -11,3 +11,7 @@
 // but we want it to not be defined at all
 // so we use cmakedefine
 #cmakedefine USE_MYMATH
+
+// does the platform provide exp and log functions?
+#cmakedefine HAVE_EXP
+#cmakedefine HAVE_LOG

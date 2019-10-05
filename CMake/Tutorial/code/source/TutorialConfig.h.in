@@ -1,0 +1,4 @@
+// the configured option and settings for Tutorial
+// CMake will create TutorialConfig.h by setting Tutorial_VERSION_MAJOR with the value from CMakeLists.txt called also Tutorial_VERSION_MAJOR, written here between @
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@

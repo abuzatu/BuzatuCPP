@@ -4,6 +4,9 @@ project(Tutorial)
 set(Tutorial_VERSION_MAJOR 2)
 set(Tutorial_VERSION_MINOR 3)
 
+# should we use our own math functions?
+option(USE_MYMATH "Use math implementation provided by tutorial" OFF)
+
 # configure a header file to pass some of the CMake settings to the source code
 configure_file (
   "${PROJECT_SOURCE_DIR}/TutorialConfig.h.in"
@@ -14,13 +17,18 @@ configure_file (
 # so that we will find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
 
-# include the header where our mysqrt() function is declared
-include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
-
-# add to build first the subdirectory where our static library will be compiled and linked
-add_subdirectory(MathFunctions)
+# add the MathFunctions library? if yes, add to the extra libs variable, else do not add it
+if(USE_MYMATH)
+  # include the header where our mysqrt() function is declared
+  include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
+  # add to build first the subdirectory where our static library will be compiled and linked
+  add_subdirectory(MathFunctions)
+  # add to the EXTRA_LIBS variable also the library MathFunctions
+  # note the EXTRA_LIBS can also be empty and if we are not adding, it remains empty
+  set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif(USE_MYMATH)
 
 # add the executable
 add_executable(Tutorial tutorial.cxx)
-# to link to Tutorial our static library
-target_link_libraries(Tutorial MathFunctions)
+# to link to Tutorial the EXTRA_LIBS, for now only the MathFunctions, if needed, else 
+target_link_libraries(Tutorial ${EXTRA_LIBS})

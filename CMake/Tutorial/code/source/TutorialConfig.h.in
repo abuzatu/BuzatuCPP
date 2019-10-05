@@ -1,4 +1,13 @@
 // the configured option and settings for Tutorial
-// CMake will create TutorialConfig.h by setting Tutorial_VERSION_MAJOR with the value from CMakeLists.txt called also Tutorial_VERSION_MAJOR, written here between @
+// CMake will create TutorialConfig.h and define variables usable in the C++ code,
+// whose value is taken from the CMakeLists.txt using the name between %%.
+
+// the software versions major and minor
 #define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
 #define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+
+// if we want to use our own math library
+// if we use same syntax as above, we will get the value ON or OFF
+// but we want it to not be defined at all
+// so we use cmakedefine
+#cmakedefine USE_MYMATH

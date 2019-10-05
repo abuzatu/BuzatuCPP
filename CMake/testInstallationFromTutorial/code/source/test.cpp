@@ -1,5 +1,6 @@
 #include "test.h"
 #include "MathFunctions.h"
+#include "Table.h"
 
 std::tuple<char, int, bool> mytuple()
 {
@@ -20,6 +21,7 @@ int main() {
 
   std::cout<<" "<<std::endl;
   std::cout<<"With our own math library sqrt(3)="<<mysqrt(3)<<std::endl;
+  std::cout<<"From the sqrtTable already computed in Table.h="<<sqrtTable[3]<<std::endl;
 
   //auto integer_literal = 1'000'000; // works only in C++14
   //auto [a, i, b] = mytuple(); // works only in C++17

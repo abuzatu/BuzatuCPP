@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(Tutorial)
+
 # The version number
 set(Tutorial_VERSION_MAJOR 2)
 set(Tutorial_VERSION_MINOR 3)

@@ -19,14 +19,20 @@ fi
 DEBUG="0"
 VERBOSE="0"
 
+# build
 DO_CMAKE_AND_MAKE="1"
 DO_ONLY_MAKE="0"
 DO_EXIT_AFTER_COMPILATION="0"
+
+# run
+DO_RUN="1"
+DO_CTEST="1"
+DO_CTEST_D_EXPERIMENTAL="0"
+
+# install
 DO_INSTALL="0"
 DO_BUILD_BINARY_DISTRIBUTION="0"
 DO_BUILD_SOURCE_DISTRIBUTION="0"
-
-DO_RUN="1"
 
 #############################################################################################
 ### Compilation
@@ -35,6 +41,7 @@ DO_RUN="1"
 # cmake + make
 if [[ ${DO_CMAKE_AND_MAKE} == "1" ]]; then
     COMMAND="cd code && rm -rf build && mkdir build && cd build && pwd && cmake ../source && make && ls -lh && cd .. && cd .."
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}    
 fi
@@ -42,6 +49,7 @@ fi
 # only make
 if [[ ${DO_ONLY_MAKE} == "1" ]]; then
     COMMAND="make -C code/build"
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
@@ -49,13 +57,47 @@ fi
 # exit, safer to be on while we are compiling for the first time, to move to running only once we expect compilation to work
 if [[ ${DO_EXIT_AFTER_COMPILATION} == "1" ]]; then
     COMMAND="exit"
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
 
+#############################################################################################
+### Run and Test
+#############################################################################################
+
+# run our executable once
+if [[ ${DO_RUN} == "1" ]]; then
+    COMMAND="./code/build/Tutorial 3.0"
+    echo ""
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+# run tests by running our executable several times as defined in CMakeLists.txt
+if [[ ${DO_CTEST} == "1" ]]; then
+    COMMAND="cd code && cd build && ctest && cd .. && cd .."
+    echo ""
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+# run tests and put the dashboard on Kitware's public dashboard (but was not able to publish there for me)
+if [[ ${DO_CTEST_D_EXPERIMENTAL} == "1" ]]; then
+    COMMAND="cd code && cd build && ctest -D Experimental && cd .. && cd .."
+    echo ""
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+#############################################################################################
+### Install (locally) and build distributions to install on other machines (binary or source)
+#############################################################################################
+
 # install locally
 if [[ ${DO_INSTALL} == "1" ]]; then
     COMMAND="cd code && cd build && make install && cd .. && cd .."
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
@@ -63,6 +105,7 @@ fi
 # do build binary distribution
 if [[ ${DO_BUILD_BINARY_DISTRIBUTION} == "1" ]]; then
     COMMAND="cd code && cd build && cpack --config CPackConfig.cmake && cd .. && cd .."
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
@@ -70,25 +113,10 @@ fi
 # do build binary distribution
 if [[ ${DO_BUILD_SOURCE_DISTRIBUTION} == "1" ]]; then
     COMMAND="cd code && cd build && cpack --config CPackSourceConfig.cmake && cd .. && cd .."
+    echo ""
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
-
-DO_INSTALL="0"
-
-#############################################################################################
-### Running
-#############################################################################################
-
-if [[ ${DO_RUN} == "0" ]]; then
-    exit 0
-fi
-
-# if here, you also want to run
-
-COMMAND="./code/build/Tutorial 2.0"
-echo "COMMAND=${COMMAND}"
-eval ${COMMAND}
 
 #############################################################################################
 ### Done

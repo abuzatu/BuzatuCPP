@@ -42,3 +42,37 @@ install(TARGETS Tutorial DESTINATION bin)
 # install the TutorialConfig.h file, so you can use hte header somewhere else
 # the result will be: -- Installing: /usr/local/include/TutorialConfig.h
 install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
+
+# add tests with CTest, that is part of CMake
+# https://gitlab.kitware.com/cmake/community/wikis/doc/ctest/Testing-With-CTest
+# the PASS_REGULAR_EXPRESSION checks in the output if a certain string exists
+# we print in the format of OUTPUT is OUTPUT, so we can search in this format
+include(CTest)
+# does the application run
+add_test (TutorialRuns Tutorial 25)
+# does it sqrt of 25
+add_test (TutorialComp25 Tutorial 25)
+set_tests_properties (TutorialComp25 PROPERTIES PASS_REGULAR_EXPRESSION "25 is 5")
+# does it handle negative numbers
+add_test (TutorialNegative Tutorial -25)
+set_tests_properties (TutorialNegative PROPERTIES PASS_REGULAR_EXPRESSION "-25 is 0")
+# does it handle small numbers
+add_test (TutorialSmall Tutorial 0.0001)
+set_tests_properties (TutorialSmall PROPERTIES PASS_REGULAR_EXPRESSION "0.0001 is 0.01")
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
+
+# to speed up writing tests, we can create a macro called my test
+# and do inside the macro all that is done for one test
+# takes two arguments: 1) the input value; 2) the string it looks for in the printed text to the standard output
+macro(do_test input output_text)
+  add_test(TutorialTest_${input} Tutorial ${input})
+  set_tests_properties(TutorialTest_${input} PROPERTIES PASS_REGULAR_EXPRESSION ${output_text})
+endmacro(do_test)
+
+# call the macro, need one line for each test
+do_test(25 "25 is 5")
+do_test(49 "49 is 7")
+do_test(-3.7 "-3.7 is 0")
+

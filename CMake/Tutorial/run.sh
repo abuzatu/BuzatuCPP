@@ -22,6 +22,9 @@ VERBOSE="0"
 DO_CMAKE_AND_MAKE="1"
 DO_ONLY_MAKE="0"
 DO_EXIT_AFTER_COMPILATION="0"
+DO_INSTALL="0"
+DO_BUILD_BINARY_DISTRIBUTION="0"
+DO_BUILD_SOURCE_DISTRIBUTION="0"
 
 DO_RUN="1"
 
@@ -49,6 +52,29 @@ if [[ ${DO_EXIT_AFTER_COMPILATION} == "1" ]]; then
     echo "COMMAND=${COMMAND}"
     eval ${COMMAND}
 fi
+
+# install locally
+if [[ ${DO_INSTALL} == "1" ]]; then
+    COMMAND="cd code && cd build && make install && cd .. && cd .."
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+# do build binary distribution
+if [[ ${DO_BUILD_BINARY_DISTRIBUTION} == "1" ]]; then
+    COMMAND="cd code && cd build && cpack --config CPackConfig.cmake && cd .. && cd .."
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+# do build binary distribution
+if [[ ${DO_BUILD_SOURCE_DISTRIBUTION} == "1" ]]; then
+    COMMAND="cd code && cd build && cpack --config CPackSourceConfig.cmake && cd .. && cd .."
+    echo "COMMAND=${COMMAND}"
+    eval ${COMMAND}
+fi
+
+DO_INSTALL="0"
 
 #############################################################################################
 ### Running

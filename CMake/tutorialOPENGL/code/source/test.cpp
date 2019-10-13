@@ -63,6 +63,7 @@ void addQuad() {
   if (st==1 || st==2 || st==3 || st==4) {
     Q[cn].x4=cx; Q[cn].y4=cy; Q[cn].z4=cz;
   }
+
 }
 
 // function that draws all the Quads, which needs to be added in the display()
@@ -167,8 +168,20 @@ void keyboard(unsigned char key, int x, int y) {
   } else if (key==32) {
     // if spacebar key is pressed, add a new Quad
     addQuad();
+  } else if (key=='r') {
+  // when pressing r, set the color of the current Quad to red
+    Q[cn].r=1; Q[cn].g=0; Q[cn].b=0;
+  } else if (key=='g') {
+  // when pressing g, set the color of the current Quad to green
+    Q[cn].r=0; Q[cn].g=1; Q[cn].b=0;
+  } else if (key=='b') {
+  // when pressing b, set the color of the current Quad to blue
+    Q[cn].r=0; Q[cn].g=0; Q[cn].b=1;
+  } else if (key=='y') {
+  // when pressing y, set the color of the current Quad to yellow
+    Q[cn].r=1; Q[cn].g=1; Q[cn].b=0; // yellow = red + green
   }
- 
+
   // propage the changed position to be displayed
   glutPostRedisplay();
   

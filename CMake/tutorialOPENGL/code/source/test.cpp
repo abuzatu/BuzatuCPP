@@ -49,6 +49,7 @@ void addQuad() {
     Q[0].total++;
     cn=Q[0].total;
   }
+  // std::cout<<"st="<<st<<std::endl;
   //
   if (st==1) {
     Q[cn].x1=cx; Q[cn].y1=cy; Q[cn].z1=cz;
@@ -68,7 +69,7 @@ void addQuad() {
 void drawQuads() {
   // loop over all the Quads in the array
   // for each print the 4 vertices with the respective color
-  for (int i=0; i!=Q[0].total; i++) {
+  for (int i=1; i!=Q[0].total+1; i++) {
     glBegin(GL_QUADS);
     glColor3f(Q[i].r,Q[i].g,Q[i].b);
     glVertex3f(Q[i].x1,Q[i].y1,Q[i].z1);
@@ -183,7 +184,7 @@ void init() {
 }
 
 int main(int argc, char **argv) {
-  std::cout<<"Test: hello world with OPENGL and GLUT!"<<std::endl;
+  std::cout<<"Test: Will draw a grid and move a cube and build quads!"<<std::endl;
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE);

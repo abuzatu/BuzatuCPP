@@ -163,7 +163,7 @@ void keyboard(unsigned char key, int x, int y) {
   } else if (key=='z') {
     // goes downwards, which means decrease the y coordinate by one
     cy-=1;
-  } else if (key=='p') {
+  } else if (key==32) {
     // if spacebar key is pressed, add a new Quad
     addQuad();
   }

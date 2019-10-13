@@ -3,7 +3,7 @@
 // our cube
 void theCube() {
   // set the colors in order R,G,B as floats from 0.0 to 1.0
-  glColor3f(0.3,0.2,0.7);
+  glColor3f(1.0,1.0,1.0);
   // set the size of the cube
   glutSolidCube(0.4);
 }
@@ -22,9 +22,9 @@ void init() {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(35,1.0f,0.1f,1000);
-  //glMatrixMode(GL_MODELVIEW);
-  //glEnable(GL_DEPTH_TEST);
-  //glClearColor(0.1,0.1,0.1,1);
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_DEPTH_TEST);
+  glClearColor(0.1,0.1,0.1,1);
 }
 
 int main(int argc, char **argv) {
